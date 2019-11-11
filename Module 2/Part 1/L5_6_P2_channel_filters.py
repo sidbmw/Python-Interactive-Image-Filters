@@ -131,7 +131,6 @@ blue_image = blue_channel(original_image)
 #######
 def combine(redPic: Image, greenPic: Image, bluePic: Image) -> Image:
     # Author: Siddharth Natamai - 101143016
-    # Date:
     """Combines the inputted images and returns the final image
     >>> combine(red_channel(original_image), green_channel(original_image), blue_channel(original_image))
     <Cimpl.Image object at 0x7fba8cef0f50>
@@ -149,7 +148,6 @@ def combine(redPic: Image, greenPic: Image, bluePic: Image) -> Image:
 
 def test_combine(original_image):
     # Author: Siddharth Natamai - 101143016
-    # Date:
     """Tests whether the picture from combine() is the same as the original image.
     >>> test_combine(original_image)
     None
