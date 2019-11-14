@@ -12,9 +12,9 @@ def posterize(original_image: original_image) -> original_image:
         g = _adjust_component(g)
         b = _adjust_component(b)
 
-        blue_increased = create_color(r, g, b)
-        set_color(new_image, x, y, blue_increased)
-        print(r, g, b)
+        new_colour = create_color(r, g, b)
+        set_color(new_image, x, y, new_colour)
+        # print(r, g, b)
 
     return new_image
 
@@ -44,3 +44,4 @@ def _adjust_component(original_val: int) -> int:
 # print(_adjust_component(192))
 
 show(posterize(original_image))
+save(posterize(original_image))
