@@ -9,19 +9,19 @@ def red_channel(original_image: Image) -> Image:
     for pixel in original_image:
         x, y, (r, g, b) = pixel
         if r >= 128:
-            r = 255
+            r += 15
         if r < 127:
-            r = 0
+            r -= 15
 
         if g >= 127:
-            g = 255
+            g += 15
         if g < 127:
-            g = 0
+            g -= 15
 
         if b >= 127:
-            b = 255
+            b += 15
         if b < 127:
-            b = 0
+            b -= 15
 
         # red = create_color(r, 0, 0)
         newColours = create_color(r, g, b)
