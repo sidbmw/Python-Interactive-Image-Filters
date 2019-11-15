@@ -4,24 +4,22 @@ file = choose_file()
 original_image = load_image(file)
 
 
-def red_channel(original_image: Image) -> Image:
+def extreme_contrast(original_image: Image) -> Image:
     red_filter = copy(original_image)
     for pixel in original_image:
         x, y, (r, g, b) = pixel
-        if r >= 128:
-            r += 15
         if r < 127:
-            r -= 15
-
-        if g >= 127:
-            g += 15
+            r = 0
+        else:
+            r = 255
         if g < 127:
-            g -= 15
-
-        if b >= 127:
-            b += 15
+            g = 0
+        else:
+            g = 255
         if b < 127:
-            b -= 15
+            b = 0
+        else:
+            b = 255
 
         # red = create_color(r, 0, 0)
         newColours = create_color(r, g, b)
@@ -30,4 +28,4 @@ def red_channel(original_image: Image) -> Image:
     return red_filter
 
 
-show(red_channel(original_image))
+show(extreme_contrast(original_image))
