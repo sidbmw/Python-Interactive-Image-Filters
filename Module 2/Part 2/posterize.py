@@ -44,4 +44,4 @@ def _adjust_component(original_val: int) -> int:
 # print(_adjust_component(192))
 
 show(posterize(original_image))
-save(posterize(original_image))
+# save(posterize(original_image))
