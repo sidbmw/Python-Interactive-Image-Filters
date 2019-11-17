@@ -32,4 +32,4 @@ def extreme_contrast(original_image: Image) -> Image:
     return extreme_copy
 
 
-extreme = extreme_contrast(original_image)
+show(extreme_contrast(original_image))
