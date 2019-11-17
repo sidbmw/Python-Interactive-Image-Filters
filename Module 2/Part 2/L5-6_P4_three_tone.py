@@ -16,14 +16,13 @@ def three_tone(image: Image, colour_1: str, colour_2: str, colour_3: str)-> Imag
     cyan
     magenta
     gray
-    Function returns an image in threeo tones as per the colours given in the 
-    second, third and fourth function parameters, decided by an individual 
+    Function returns an image in three tones (as per the colours given in the 
+    second, third and fourth function parameters) decided by an individual 
     pixel's brightness.
     -Function written by Nathan Gomes, 101143780
     
     >>> three_tone(image_1, "blue", "gray", "white")
-    #Displays the original image first and then the image with only blue, gray
-    and white
+    #Gives the image in only blue, gray and white tones.
     >>> three_tone(image_1, "yellow", "cyan", "purple")
     #Error because colour passed ("purple") is not in the given list
     """
@@ -59,4 +58,4 @@ def three_tone(image: Image, colour_1: str, colour_2: str, colour_3: str)-> Imag
                 if colour_3 == L[i][0]:
                     set_color(new_image, x, y, L[i][1])        
                             
-    return show(new_image)
+    return new_image
