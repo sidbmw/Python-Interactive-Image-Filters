@@ -284,7 +284,7 @@ class Image(object):
             # mixed case.
             if ext in IMAGE_FILE_FORMATS or \
                     (ext.isupper() and ext.lower() in IMAGE_FILE_FORMATS):
-                self.pil_image.save(filename, quality=75)
+                self.pil_image.save(filename, quality=100)
                 # self.set_filename_and_title(filename)
             else:
                 raise ValueError("%s is not a supported image file format." \
