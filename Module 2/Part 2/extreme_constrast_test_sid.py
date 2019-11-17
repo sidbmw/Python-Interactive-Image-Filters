@@ -29,3 +29,4 @@ def extreme_contrast(original_image: Image) -> Image:
 
 
 show(extreme_contrast(original_image))
+# save(extreme_contrast(original_image))

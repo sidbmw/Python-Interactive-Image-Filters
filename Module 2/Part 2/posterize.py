@@ -8,14 +8,7 @@ def posterize(original_image: original_image) -> original_image:
     new_image = copy(original_image)
     for pixel in original_image:
         x, y, (r, g, b) = pixel
-        r = _adjust_component(r)
-        g = _adjust_component(g)
-        b = _adjust_component(b)
-
-        new_colour = create_color(r, g, b)
-        set_color(new_image, x, y, new_colour)
-        # print(r, g, b)
-
+        set_color(image, x, y, create_color(_adjust_component(r), _adjust_component(g), _adjust_component(b)))
     return new_image
 
 
