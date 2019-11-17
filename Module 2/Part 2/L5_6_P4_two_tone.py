@@ -1,10 +1,6 @@
 from Cimpl import *
 
 
-# file = choose_file()
-# original_image = load_image(file)
-
-
 def two_tone(image: Image, colour_1: str, colour_2: str) -> Image:
     """Function takes an image file and two colours as strings from the given
     list:
@@ -56,5 +52,3 @@ def two_tone(image: Image, colour_1: str, colour_2: str) -> Image:
                     set_color(new_image, x, y, L[i][1])
 
     return new_image
-
-

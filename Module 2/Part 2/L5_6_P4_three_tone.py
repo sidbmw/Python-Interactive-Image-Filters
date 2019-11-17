@@ -1,8 +1,7 @@
 from Cimpl import *
-import Cimpl
 
-file = choose_file()
-original_image = load_image(file)
+# file = choose_file()
+# original_image = load_image(file)
 
 
 def three_tone(image: Image, colour_1: str, colour_2: str, colour_3: str) -> Image:
@@ -21,7 +20,7 @@ def three_tone(image: Image, colour_1: str, colour_2: str, colour_3: str) -> Ima
     second, third and fourth function parameters, decided by an individual 
     pixel's brightness.
     -Function written by Nathan Gomes, 101143780
-    
+
     >>> three_tone(image_1, "blue", "gray", "white")
     #Displays the original image first and then the image with only blue, gray
     and white
@@ -60,7 +59,4 @@ def three_tone(image: Image, colour_1: str, colour_2: str, colour_3: str) -> Ima
                 if colour_3 == L[i][0]:
                     set_color(new_image, x, y, L[i][1])
 
-    return show(new_image)
-
-
-three_tone(original_image, "black", "white", "gray")
+    return new_image
