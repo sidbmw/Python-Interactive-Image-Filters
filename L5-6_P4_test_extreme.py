@@ -19,35 +19,29 @@ def test_extreme(original_image: Image):
         x, y, (r, g, b) = pixel
         if r == 0 or r == 255:
             failed += 0
-        elif:
-            r<=127
+        elif 0< r <=127:
             print("Test failed at: ", (x, y), (r, g, b),"expected 0 but got", r,".")
             failed += 1
-        elif:
-            127 < r
+        elif 127< r <=255:
             print("Test failed at: ", (x, y), (r, g, b),"expected 255 but got", r,".")
             failed += 1 
             
         if g == 0 or g == 255:
             failed += 0
-        elif:
-            g<=127
+        elif 0< g <=127:
             print("Test failed at: ", (x, y), (r, g, b),"expected 0 but got", g,".")
             failed += 1
-        elif:
-            127 < g
+        elif 127< g <255:
             print("Test failed at: ", (x, y), (r, g, b),"expected 255 but got", g,".")
             failed += 1
             
         if b==0 or b ==255:
             failed += 0
-        elif:
-            b<=127
-            print("Test failed at: ", (x, y), (r, g, b),"expected 0 but got", ,".")
+        elif 0< b <=127:
+            print("Test failed at: ", (x, y), (r, g, b),"expected 0 but got", b,".")
             failed += 1
-        elif:
-            127 < g
-            print("Test failed at: ", (x, y), (r, g, b),"expected 255 but got", g,".") 
+        elif 127 < g <255:
+            print("Test failed at: ", (x, y), (r, g, b),"expected 255 but got", b,".") 
             failed += 1
             
     if failed != 0:
