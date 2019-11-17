@@ -12,10 +12,7 @@ def test_three_tone():
     filtered_image = three_t(original_image, "black", "white", "lime")
     test_state = True
 
-    i = 0
     for pixel in filtered_image:
-        i += 1
-        print(i)
         x, y, (r, g, b) = pixel
         color_original = get_color(original_image, x, y)
         color_filtered = get_color(filtered_image, x, y)
