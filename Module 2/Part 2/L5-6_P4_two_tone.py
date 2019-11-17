@@ -22,7 +22,7 @@ def two_tone(image: Image, colour_1: str, colour_2: str) -> Image:
     -Function written by Nathan Gomes, 101143780
     
     >>> two_tone(image_1, "red", "gray")
-    #Displays the original image first and then the image with only red and gray
+    #Returns the image with only red and gray tones.
     >>> two_tone(image_1, "black", "pink")
     #Error because colour passed ("pink") is not in the given list
     """
