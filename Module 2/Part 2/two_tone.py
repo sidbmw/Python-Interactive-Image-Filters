@@ -55,7 +55,7 @@ def two_tone(image: Image, colour_1: str, colour_2: str) -> Image:
                 if colour_2 == L[i][0]:
                     set_color(new_image, x, y, L[i][1])
 
-    return show(image), save(new_image)
+    return show(image), show(new_image)
 
 
-two_tone(original_image, "white", "black")
+# two_tone(original_image, "white", "black")
