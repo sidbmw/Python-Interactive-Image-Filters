@@ -7,7 +7,7 @@ original_image = load_image(file)
 
 def test_three_tone():
     """ Author: Siddharth Natamai - 101143016
-            Date: Nov 17, 2019
+        Date: Nov 17, 2019
 
         Returns a bool depending on whether the the function is working properly or not
         >>> test_three_tone()
