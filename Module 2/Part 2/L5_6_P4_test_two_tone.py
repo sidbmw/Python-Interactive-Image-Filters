@@ -33,4 +33,4 @@ def test_two_tone():
 
 # show(tt(original_image, "black", "white"))
 
-test_two_tone()
+# test_two_tone()
