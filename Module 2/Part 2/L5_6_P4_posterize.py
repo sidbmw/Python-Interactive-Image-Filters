@@ -1,7 +1,7 @@
 from Cimpl import *
 
-file = choose_file()
-original_image = load_image(file)
+# file = choose_file()
+# original_image = load_image(file)
 
 
 def posterize(original_image: original_image) -> original_image:
