@@ -1,9 +1,6 @@
 from simple_Cimpl_filters import *
 from Cimpl import *
 
-file = choose_file()
-original_image = load_image(file)
-
 def sepia_channel(original_image: Image):
     """Return an image a black and white image which as been tinted yellow.\
     -Function written by Leanne Matamoros - 101147405
@@ -18,15 +15,18 @@ def sepia_channel(original_image: Image):
     for pixel in sepia_filter:
         x, y, (r, g, b) = pixel
         if r < 63:
-            sepia_tinted = create_color((r * 1.1), g, (b * 0.9))
-            set_color (sepia_filter, x, y, sepia_tinted)
+            r *= 1.1
+            b *= 0.9
             
         if (63 <= r <= 191):
-            sepia_tinted = create_color((r * 1.15), g, (b * 0.85))
-            set_color (sepia_filter, x, y, sepia_tinted)
+            r *= 1.15
+            b *= 0.85
             
         if (r > 191):
-            sepia_tinted = create_color((r * 1.08), g, (b * 0.93))
-            set_color (sepia_filter, x, y, sepia_tinted)
+            r *= 1.08
+            b *= 0.93
+            
+        new_color = create_color(r, g, b)
+        set_color(sepia_filter, x, y, new_color)
         
     return sepia_filter
