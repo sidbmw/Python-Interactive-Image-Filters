@@ -9,12 +9,12 @@ def test_two_tone():
     """ Author: Siddharth Natamai - 101143016
         Date: Nov 17, 2019
 
-    Returns a bool depending on whether the the function is working properly or not
-    >>> test_two_tone()
-    True
-    >>> test_two_tone()
-    False
-    """
+        Returns a bool depending on whether the the function is working properly or not
+        >>> test_two_tone()
+        True
+        >>> test_two_tone()
+        False
+        """
     filtered_image = tt(original_image, "black", "white")
     test_state = True
 
