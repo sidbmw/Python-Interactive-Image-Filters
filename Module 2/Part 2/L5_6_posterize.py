@@ -5,7 +5,10 @@ original_image = load_image(file)
 
 
 def posterize(original_image: original_image) -> original_image:
-    """Returns a image after applying a posterizing filter based on values from the _adjust_component function
+    """ Author: Siddharth Natamai - 1011403016
+        Date: Nov 17, 2019
+
+    Returns a image after applying a posterizing filter based on values from the _adjust_component function
     >>> posterize(original_image)
     <Cimpl.Image object at 0x7f7ba88dbd10>
     """
