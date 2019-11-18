@@ -22,7 +22,7 @@ def test_two_tone():
         x, y, (r, g, b) = pixel
         color_original = get_color(original_image, x, y)
         color_filtered = get_color(filtered_image, x, y)
-        color_average = (color_original[0] + color_original[1] + color_original[2]) / 3
+        color_average = (color_original[0] + color_original[1] + color_original[2]) // 3
 
         colour_1 = create_color(0, 0, 0)
         colour_2 = create_color(255, 255, 255)
@@ -39,6 +39,7 @@ def test_two_tone():
 
     return test_state
 
+
 # show(tt(original_image, "black", "white"))
 
-# test_two_tone()
+test_two_tone()
