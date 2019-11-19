@@ -1,10 +1,10 @@
 from Cimpl import *
 
-# file = choose_file()
-# original_image = load_image(file)
+file = choose_file()
+original_image = load_image(file)
 
 
-def posterize(original_image: original_image) -> original_image:
+def posterize(original_image: Image) -> Image:
     """ Author: Siddharth Natamai - 1011403016
         Date: Nov 17, 2019
 
