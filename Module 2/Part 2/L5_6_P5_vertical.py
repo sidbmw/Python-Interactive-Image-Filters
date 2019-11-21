@@ -4,7 +4,7 @@ import Cimpl
 
 def flip_vertical(image: Image) ->Image:
     """
-    
+    Author : Nathan Gomes - 101143780
     """
     new_image = copy(image)
     mid_pixel = get_width(new_image)//2
