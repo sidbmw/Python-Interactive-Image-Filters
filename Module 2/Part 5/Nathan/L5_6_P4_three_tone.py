@@ -1,5 +1,8 @@
+"""ECOR 1051 - Fall 2019
+Group L5_6 - Milestone 2, P4 
+Submitted on: 17/11/2019"""
+
 from Cimpl import *
-import Cimpl
 
 def three_tone(filename:str, colour_1:str, colour_2:str, colour_3:str)->Image:
     """Function takes a filename of an image as a string, assuming the image is 
