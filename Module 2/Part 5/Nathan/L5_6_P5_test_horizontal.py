@@ -3,7 +3,7 @@ from Cimpl import *
 from L5_6_P5_horizontal import *
 
 def check_equal(description: str, outcome, expected) -> None:
-    """
+    """ Function Author : Prof. Donald L. Bailey
     Print a "passed" message if outcome and expected have same type and
     are equal (as determined by the == operator); otherwise, print a 
     "fail" message.
@@ -39,9 +39,28 @@ def check_equal(description: str, outcome, expected) -> None:
 
 
 def flip_horizontal_test() -> None:
+    """Function Author: Nathan Gomes - 101143780
+    A test function for flip_horizontal filter.
+    
+    >>> flip_horizontal_test()
+    Checking pixel @(0, 0) PASSED
+    ------  
+    Checking pixel @(1, 0) PASSED
+    ------
+    Checking pixel @(0, 1) PASSED
+    ------
+    Checking pixel @(1, 1) PASSED
+    ------
+    Checking pixel @(0, 2) PASSED
+    ------
+    Checking pixel @(1, 2) PASSED
+    ------
+    Checking pixel @(0, 3) PASSED
+    ------
+    Checking pixel @(1, 3) PASSED
+    ------
     """
     
-    """
     original_image = create_image(2, 4)
     set_color(original_image, 0, 0, create_color(0, 0, 0))
     set_color(original_image, 0, 1, create_color(255, 255, 255))
