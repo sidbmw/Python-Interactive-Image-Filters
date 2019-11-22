@@ -1,11 +1,19 @@
-#Group L5_6 - Milestone 2, P5 - Submitted on: 22/11/2019
+"""ECOR 1051 - Fall 2019
+Group L5_6 - Milestone 2, P5 
+Submitted on: 22/11/2019"""
+
 from Cimpl import *
-import Cimpl
 
 def flip_vertical(image: Image) ->Image:
+    """Function author : Nathan Gomes - 101143780
+    Function takes an image and returns a copy of the image that has been
+    flipped vertically (across the "y" axis in an x-y co-ordinate system).
+    
+    >>> original_image = load_image("filename")
+    >>> flip_vertical(original_image)
+    <Cimpl.Image object at 0x000001A90D7A7408>
     """
     
-    """
     new_image = copy(image)
     mid_pixel = get_width(new_image)//2
     width = get_width(new_image)
