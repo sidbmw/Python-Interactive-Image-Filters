@@ -73,7 +73,7 @@ def test_vertical_flip():
     set_color(original, 1, 1, create_color(0, 0, 0))
     set_color(original, 2, 1, create_color(255, 255, 255))
     set_color(original, 3, 1, create_color(255, 255, 255))
-    show(original)
+    # show(original)
 
     expected = create_image(4, 2)
     set_color(original, 0, 0, create_color(255, 255, 255))
@@ -84,10 +84,10 @@ def test_vertical_flip():
     set_color(original, 1, 1, create_color(255, 255, 255))
     set_color(original, 2, 1, create_color(0, 0, 0))
     set_color(original, 3, 1, create_color(0, 0, 0))
-    show(expected)
+    # show(expected)
 
     flipped_image = flip_vertical(original)
-    show(flipped_image)
+    # show(flipped_image)
 
     for x, y, col in flipped_image:
         check_equal('Checking pixel @(' + str(x) + ', ' + str(y) + ')',
