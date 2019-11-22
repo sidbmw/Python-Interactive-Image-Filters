@@ -1,3 +1,7 @@
+"""ECOR 1051 - Fall 2019
+Group L5_6 - Milestone 1, P2 
+Submitted on: 10/11/2019"""
+
 from Cimpl import *
 import Cimpl
 
