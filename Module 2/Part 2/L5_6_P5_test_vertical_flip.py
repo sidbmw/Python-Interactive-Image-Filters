@@ -1,9 +1,18 @@
+"""
+ECOR 1051 Fall 2019
+Group: L5-6
+
+Test function for the flip_vertical function.
+
+Program prints whether the test passed or failed along with which pixels failed/passed.
+"""
+
 from Cimpl import *
 
 
 def check_equal(description: str, outcome, expected) -> None:
     """
-    Author: Donald Bailey
+    Author: Prof. Donald L. Bailey
     Print a "passed" message if outcome and expected have same type and
     are equal (as determined by the == operator); otherwise, print a
     "fail" message.
@@ -64,6 +73,14 @@ def flip_vertical(image: Image) -> Image:
 
 
 def test_vertical_flip():
+    """
+    Author: Siddharth Natamai - 101143016
+    Tests the flip_vertical function.
+
+    >>> test_vertical_flip()
+    """
+
+    # Create a image with a resolution of 4x2 (8 pixels in total)
     original = create_image(4, 2)
     set_color(original, 0, 0, create_color(0, 0, 0))
     set_color(original, 1, 0, create_color(0, 0, 0))
@@ -73,8 +90,8 @@ def test_vertical_flip():
     set_color(original, 1, 1, create_color(0, 0, 0))
     set_color(original, 2, 1, create_color(255, 255, 255))
     set_color(original, 3, 1, create_color(255, 255, 255))
-    # show(original)
 
+    # Expected image after passing into the flip_vertical function.
     expected = create_image(4, 2)
     set_color(expected, 0, 0, create_color(255, 255, 255))
     set_color(expected, 1, 0, create_color(255, 255, 255))
@@ -84,11 +101,10 @@ def test_vertical_flip():
     set_color(expected, 1, 1, create_color(255, 255, 255))
     set_color(expected, 2, 1, create_color(0, 0, 0))
     set_color(expected, 3, 1, create_color(0, 0, 0))
-    # show(expected)
 
     flipped_image = flip_vertical(original)
-    # show(flipped_image)
 
+    # Checks each pixel and prints 'PASSED' or 'FAILED' based on expected image values and image passed into flip_vertical
     for x, y, col in flipped_image:
         check_equal('Checking pixel @(' + str(x) + ', ' + str(y) + ')',
                     col, get_color(expected, x, y))
