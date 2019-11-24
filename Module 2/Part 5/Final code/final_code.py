@@ -1,8 +1,10 @@
-from Cimpl import copy, set_color, create_color, get_color
+from Cimpl import copy, get_width, get_height, get_color, set_color, \
+    create_color
 
 
 def _adjust_component(original_val: int) -> int:
-    """Determines where each pixel lies in the 4 quadrants (0 to 63, 64 to 127,
+    """Author: Prof. Donald Bailey
+    Determines where each pixel lies in the 4 quadrants (0 to 63, 64 to 127,
      128 to 191, and 192 to 255)
     and sets the new pixel values to the midpoint of that specific quadrant.
     >>> _adjust_component(50)
@@ -58,3 +60,26 @@ def posterize(original_image: Image) -> Image:
                                                      _adjust_component(b)))
     return new_image
 
+
+def flip_horizontal(original_image: Image) -> Image:
+    """ Author: Siddharth Natamai - 1011403016
+        Date: Nov 19, 2019
+
+    Returns a original_image after flipping along the x-axis (horizontal flip)
+    >>> flip_horizontal(original_image)
+    <Cimpl.original_image object at 0x7f7ba88dbd10>
+    """
+
+    new_image = copy(original_image)
+    img_width = get_width(new_image)
+    img_height = get_height(new_image)
+    img_center = img_height // 2
+
+    for x in range(img_width):
+        for y in range(img_center):
+            r, g, b = get_color(new_image, x, y)
+            r2, g2, b2 = get_color(new_image, x, img_height - y - 1)
+            set_color(new_image, x, y, create_color(r2, g2, b2))
+            set_color(new_image, x, img_height - y - 1, create_color(r, g, b))
+
+    return new_image
