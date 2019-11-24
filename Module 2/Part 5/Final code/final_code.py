@@ -1,5 +1,5 @@
 from Cimpl import copy, get_width, get_height, get_color, set_color, \
-    create_color, grayscale, Image
+    create_color, Image
 
 
 def _adjust_component(original_val: int) -> int:
@@ -24,6 +24,30 @@ def _adjust_component(original_val: int) -> int:
     elif original_val <= 255:
         new_val = 223
     return new_val
+
+
+def grayscale(image: Image) -> Image:
+    """Author: Prof. Donald Bailey
+    Return a grayscale copy of image.
+
+    >>> image = load_image(choose_file())
+    >>> gray_image = grayscale(image)
+    >>> show(gray_image)
+    """
+    new_image = copy(image)
+    for x, y, (r, g, b) in image:
+        # Use the pixel's brightness as the value of RGB components for the
+        # shade of gray. These means that the pixel's original colour and the
+        # corresponding gray shade will have approximately the same brightness.
+
+        brightness = (r + g + b) // 3
+
+        # or, brightness = (r + g + b) / 3
+        # create_color will convert an argument of type float to an int
+
+        gray = create_color(brightness, brightness, brightness)
+        set_color(new_image, x, y, gray)
+    return new_image
 
 
 def combine(red_pic: Image, green_pic: Image, blue_pic: Image) -> Image:
