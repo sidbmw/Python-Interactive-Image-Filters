@@ -83,3 +83,94 @@ def flip_horizontal(original_image: Image) -> Image:
             set_color(new_image, x, img_height - y - 1, create_color(r, g, b))
 
     return new_image
+
+
+def sepia(original_image: Image) -> Image:
+    """Returns a black and white image which has been tinted yellow.
+
+    >>> original_image = load_image(choose_file())
+    >>> sepia(original_image)
+    <Cimpl.Image object at 0x00000212C566DD88>
+
+    """
+    new_image = copy(original_image)
+    sepia_filter = grayscale(new_image)
+
+    for pixel in sepia_filter:
+        x, y, (r, g, b) = pixel
+        if r < 63:
+            r *= 1.1
+            b *= 0.9
+
+        if 63 <= r <= 191:
+            r *= 1.15
+            b *= 0.85
+
+        if r > 191:
+            r *= 1.08
+            b *= 0.93
+
+        new_color = create_color(r, g, b)
+        set_color(sepia_filter, x, y, new_color)
+
+    return sepia_filter
+
+
+def detect_edges_better(original_image: Image, threshold: float) -> Image:
+    """Returns an image that looks like a pencil sketch of the original image,
+    changing the pixels' colors to black or white.
+    - Function written by Leanne Matamoros - 101147405
+
+    >>> imp_edge(original_image, 15)
+    <Cimpl.Image object at 0x000002096DEEA148>
+    """
+    edges_copy = copy(original_image)
+
+    width = get_width(edges_copy)
+    height = get_height(edges_copy)
+
+    for x in range(width):
+        for y in range(height):
+
+            r, g, b = get_color(edges_copy, x, y)
+            brightness = (r + g + b) / 3
+
+            if y != (height - 1):
+                r1, g1, b1 = get_color(edges_copy, x, (y + 1))
+                brightness1 = (r1 + g1 + b1) / 3
+
+            if x != (width - 1):
+                r2, g2, b2 = get_color(edges_copy, (x + 1), y)
+                brightness2 = (r2 + g2 + b2) / 3
+
+            black = create_color(0, 0, 0)
+            white = create_color(255, 255, 255)
+
+            if x == (width - 1) and y == (height - 1):
+                set_color(edges_copy, x, y, white)
+
+            elif x != (width - 1) or y != (height - 1):
+                if abs(brightness - brightness1) > threshold or abs(
+                        brightness - brightness2) > threshold:
+                    set_color(edges_copy, x, y, black)
+
+                elif abs(brightness - brightness1) < threshold or abs(
+                        brightness
+                        - brightness2) < threshold:
+                    set_color(edges_copy, x, y, white)
+
+            elif x == (width - 1):
+                if abs(brightness - brightness1) > threshold:
+                    set_color(edges_copy, x, y, black)
+
+                elif abs(brightness - brightness1) < threshold:
+                    set_color(edges_copy, x, y, white)
+
+            elif y == (height - 1):
+                if abs(brightness - brightness2) > threshold:
+                    set_color(edges_copy, x, y, black)
+
+                elif abs(brightness - brightness2) < threshold:
+                    set_color(edges_copy, x, y, white)
+
+    return edges_copy
