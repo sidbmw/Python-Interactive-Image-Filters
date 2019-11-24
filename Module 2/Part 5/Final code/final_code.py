@@ -1,104 +1,60 @@
-from Cimpl import copy, get_width, get_height, get_color, set_color, \
-    create_color, create_image
+from Cimpl import copy, set_color, create_color, get_color
 
 
-def check_equal(description: str, outcome, expected) -> None:
+def _adjust_component(original_val: int) -> int:
+    """Determines where each pixel lies in the 4 quadrants (0 to 63, 64 to 127,
+     128 to 191, and 192 to 255)
+    and sets the new pixel values to the midpoint of that specific quadrant.
+    >>> _adjust_component(50)
+    31
+    >>> _adjust_component(90)
+    95
+    >>> _adjust_component(155)
+    159
     """
-    Author: Prof. Donald L. Bailey
-    Print a "passed" message if outcome and expected have same type and
-    are equal (as determined by the == operator); otherwise, print a
-    "fail" message.
 
-    Parameter description should provide information that will help us
-    interpret the test results; e.g., the call expression that yields
-    outcome.
+    if original_val <= 63:
+        new_val = 31
+    elif original_val <= 127:
+        new_val = 95
+    elif original_val <= 191:
+        new_val = 159
+    elif original_val <= 255:
+        new_val = 223
+    return new_val
 
-    Parameters outcome and expected are typically the actual value returned
-    by a call expression and the value we expect a correct implementation
-    of the function to return, respectively. Both parameters must have the same
-    type, which must be a type for which == is used to determine if two values
-    are equal. Don't use this function to check if floats, lists of floats,
-    tuples of floats, etc. are equal.
+
+def combine(red_pic: Image, green_pic: Image, blue_pic: Image) -> Image:
+    # Author: Siddharth Natamai - 101143016
+    """Combines the inputted images and returns the final image
+    >>> combine(image_1, image_2, image_3)
+    <Cimpl.Image object at 0x7fab575d3ad0>
     """
-    outcome_type = type(outcome)
-    expected_type = type(expected)
-    if outcome_type != expected_type:
+    final_image = copy(red_pic)
+    for pixel in final_image:
+        x, y, (r, g, b) = pixel
+        blue_colour = get_color(blue_pic, x, y)
+        green_colour = get_color(green_pic, x, y)
+        new_colours = create_color(r, green_colour[1], blue_colour[2])
+        set_color(final_image, x, y, new_colours)
 
-        # The format method is explained on pages 119-122 of
-        # 'Practical Programming', 3rd ed.
-
-        print("{0} FAILED: expected ({1}) has type {2}, " \
-              "but outcome ({3}) has type {4}".
-              format(description, expected,
-                     str(expected_type).strip('<class> '),
-                     outcome, str(outcome_type).strip('<class> ')))
-    elif outcome != expected:
-        print("{0} FAILED: expected {1}, got {2}".
-              format(description, expected, outcome))
-    else:
-        print("{0} PASSED".format(description))
-    print("------")
+    return final_image
 
 
-def flip_vertical(image: Image) -> Image:
-    # """Function author : Nathan Gomes - 101143780
-    # Function takes an image and returns a copy of the image that has been
-    # flipped vertically (across the "y" axis in an x-y co-ordinate system).
-    #
-    # >>> original_image = load_image("filename")
-    # >>> flip_vertical(original_image)
-    # <Cimpl.Image object at 0x000001A90D7A7408>
-    # """
+def posterize(original_image: Image) -> Image:
+    """ Author: Siddharth Natamai - 1011403016
+        Date: Nov 17, 2019
 
-    new_image = copy(image)
-    mid_pixel = get_width(new_image) // 2
-    width = get_width(new_image)
-    height = get_height(new_image)
-
-    for x in range(mid_pixel):
-        for y in range(height):
-            r, g, b = get_color(image, x, y)
-            new_r, new_g, new_b = get_color(image, abs(width - x) - 1, y)
-            set_color(new_image, x, y, create_color(new_r, new_g, new_b))
-            set_color(new_image, width - x - 1, y, create_color(r, g, b))
-
+    Returns a image after applying a posterizing filter based on values from
+    the_adjust_component function
+    >>> posterize(original_image)
+    <Cimpl.Image object at 0x7f7ba88dbd10>
+    """
+    new_image = copy(original_image)
+    for pixel in original_image:
+        x, y, (r, g, b) = pixel
+        set_color(original_image, x, y, create_color(_adjust_component(r),
+                                                     _adjust_component(g),
+                                                     _adjust_component(b)))
     return new_image
 
-
-def test_vertical_flip():
-    """
-    Author: Siddharth Natamai - 101143016
-    Tests the flip_vertical function.
-
-    >>> test_vertical_flip()
-    """
-
-    # Create a image with a resolution of 4x2 (8 pixels in total)
-    original = create_image(4, 2)
-    set_color(original, 0, 0, create_color(0, 0, 0))
-    set_color(original, 1, 0, create_color(0, 0, 0))
-    set_color(original, 2, 0, create_color(255, 255, 255))
-    set_color(original, 3, 0, create_color(255, 255, 255))
-    set_color(original, 0, 1, create_color(0, 0, 0))
-    set_color(original, 1, 1, create_color(0, 0, 0))
-    set_color(original, 2, 1, create_color(255, 255, 255))
-    set_color(original, 3, 1, create_color(255, 255, 255))
-
-    # Expected image after passing into the flip_vertical function.
-    expected = create_image(4, 2)
-    set_color(expected, 0, 0, create_color(255, 255, 255))
-    set_color(expected, 1, 0, create_color(255, 255, 255))
-    set_color(expected, 2, 0, create_color(0, 0, 0))
-    set_color(expected, 3, 0, create_color(0, 0, 0))
-    set_color(expected, 0, 1, create_color(255, 255, 255))
-    set_color(expected, 1, 1, create_color(255, 255, 255))
-    set_color(expected, 2, 1, create_color(0, 0, 0))
-    set_color(expected, 3, 1, create_color(0, 0, 0))
-
-    flipped_image = flip_vertical(original)
-
-    # Checks each pixel and prints 'PASSED' or 'FAILED' based on expected
-    # image values and image passed into flip_vertical
-    for x, y, col in flipped_image:
-        check_equal('Checking pixel @(' + str(x) + ', ' + str(y) + ')',
-                    col, get_color(expected, x, y))
