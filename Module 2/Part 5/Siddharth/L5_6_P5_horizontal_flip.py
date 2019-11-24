@@ -6,7 +6,7 @@ Horizontal flip function
 """
 
 from Cimpl import copy, get_width, get_height, get_color, set_color, \
-    create_color
+    create_color, Image
 
 
 # file = choose_file()

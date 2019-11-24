@@ -1,4 +1,4 @@
-from Cimpl import copy, set_color, create_color
+from Cimpl import copy, set_color, create_color, Image
 
 
 # file = choose_file()

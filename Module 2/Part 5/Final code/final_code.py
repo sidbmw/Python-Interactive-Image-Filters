@@ -1,5 +1,5 @@
 from Cimpl import copy, get_width, get_height, get_color, set_color, \
-    create_color
+    create_color, grayscale, Image
 
 
 def _adjust_component(original_val: int) -> int:

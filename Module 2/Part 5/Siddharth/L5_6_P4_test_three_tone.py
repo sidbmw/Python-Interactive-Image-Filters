@@ -1,11 +1,12 @@
-from Cimpl import get_color, create_color
+from Cimpl import get_color, create_color, Image
 from L5_6_P4_three_tone import three_tone
+
 
 # file = choose_file()
 # original_image = load_image(file)
 
 
-def test_three_tone(original_image):
+def test_three_tone(original_image: Image):
     """ Author: Siddharth Natamai - 101143016
         Date: Nov 17, 2019
 

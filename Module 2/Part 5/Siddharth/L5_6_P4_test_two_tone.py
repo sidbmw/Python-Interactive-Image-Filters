@@ -1,4 +1,4 @@
-from Cimpl import get_color, create_color
+from Cimpl import get_color, create_color, Image
 from L5_6_P4_two_tone import two_tone as tt
 
 
