@@ -1,9 +1,6 @@
-""" ECOR 1051 Fall 2019
-
-Milestone 2
-L5_6
-Functions for improved edge detection.
-Last edited: Nov. 20, 2019
+"""ECOR 1051 - Fall 2019
+Group L5_6 - Milestone 2, P5 
+Submitted on: 22/11/2019
 """
 
 from Cimpl import *
