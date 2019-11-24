@@ -5,10 +5,12 @@ Group Number: L5-6
 Horizontal flip function
 """
 
-from Cimpl import *
+from Cimpl import copy, get_width, get_height, get_color, set_color, \
+    create_color
 
-file = choose_file()
-original_image = load_image(file)
+
+# file = choose_file()
+# original_image = load_image(file)
 
 
 def flip_horizontal(original_image: Image) -> Image:
@@ -34,6 +36,5 @@ def flip_horizontal(original_image: Image) -> Image:
 
     return new_image
 
-
-show(flip_horizontal(original_image))
+# show(flip_horizontal(original_image))
 # flip_horizontal(original_image)

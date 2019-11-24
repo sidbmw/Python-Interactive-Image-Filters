@@ -4,10 +4,11 @@ Group: L5-6
 
 Test function for the flip_vertical function.
 
-Program prints whether the test passed or failed along with which pixels failed/passed.
-"""
+Program prints whether the test passed or failed along with which pixels
+failed/passed. """
 
-from Cimpl import *
+from Cimpl import copy, get_width, get_height, get_color, set_color, \
+    create_color, create_image
 
 
 def check_equal(description: str, outcome, expected) -> None:
@@ -37,7 +38,8 @@ def check_equal(description: str, outcome, expected) -> None:
 
         print("{0} FAILED: expected ({1}) has type {2}, " \
               "but outcome ({3}) has type {4}".
-              format(description, expected, str(expected_type).strip('<class> '),
+              format(description, expected,
+                     str(expected_type).strip('<class> '),
                      outcome, str(outcome_type).strip('<class> ')))
     elif outcome != expected:
         print("{0} FAILED: expected {1}, got {2}".
@@ -104,7 +106,8 @@ def test_vertical_flip():
 
     flipped_image = flip_vertical(original)
 
-    # Checks each pixel and prints 'PASSED' or 'FAILED' based on expected image values and image passed into flip_vertical
+    # Checks each pixel and prints 'PASSED' or 'FAILED' based on expected
+    # image values and image passed into flip_vertical
     for x, y, col in flipped_image:
         check_equal('Checking pixel @(' + str(x) + ', ' + str(y) + ')',
                     col, get_color(expected, x, y))
