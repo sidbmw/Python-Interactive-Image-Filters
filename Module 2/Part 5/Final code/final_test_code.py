@@ -1,43 +1,9 @@
 from Cimpl import set_color, create_color, get_color, create_image, Image
-from final_code import *
+from final_code import _adjust_component, posterize, flip_horizontal, sepia, \
+    detect_edges_better, extreme_contrast, detect_edges, blue_channel, \
+    three_tone, flip_vertical, check_equal
 
-
-def check_equal(description: str, outcome, expected) -> None:
-    """
-    Author: Prof. Donald L. Bailey
-    Print a "passed" message if outcome and expected have same type and
-    are equal (as determined by the == operator); otherwise, print a
-    "fail" message.
-
-    Parameter description should provide information that will help us
-    interpret the test results; e.g., the call expression that yields
-    outcome.
-
-    Parameters outcome and expected are typically the actual value returned
-    by a call expression and the value we expect a correct implementation
-    of the function to return, respectively. Both parameters must have the same
-    type, which must be a type for which == is used to determine if two values
-    are equal. Don't use this function to check if floats, lists of floats,
-    tuples of floats, etc. are equal.
-    """
-    outcome_type = type(outcome)
-    expected_type = type(expected)
-    if outcome_type != expected_type:
-
-        # The format method is explained on pages 119-122 of
-        # 'Practical Programming', 3rd ed.
-
-        print("{0} FAILED: expected ({1}) has type {2}, " \
-              "but outcome ({3}) has type {4}".
-              format(description, expected,
-                     str(expected_type).strip('<class> '),
-                     outcome, str(outcome_type).strip('<class> ')))
-    elif outcome != expected:
-        print("{0} FAILED: expected {1}, got {2}".
-              format(description, expected, outcome))
-    else:
-        print("{0} PASSED".format(description))
-    print("------")
+from final_code import two_tone as tt
 
 
 def test_detect_edge() -> None:
@@ -408,6 +374,23 @@ def test_sepia() -> None:
                         get_color(expected, x, y))
 
 
+def test_red() -> None:
+    """Tests the red_channel function. Returns PASS if all pixels in red_image
+    have 0 green and blue components.
+    - Function written by Malak Abdou - 101139692
+
+    >>> test_red()
+    PASS
+    """
+
+    show(red_image)
+    r, g, b = get_color(red_image, 0, 0)
+    if g == 0 and b == 0:
+        print('PASS')
+    else:
+        print('FAIL')
+
+
 def test_blue_channel() -> None:
     """Function tests the blue_channel filter.
     -Function written by Nathan Gomes - 101143780
@@ -567,3 +550,21 @@ def test_adjust_component() -> None:
     for x, y, col in adjusted_image:
         check_equal("(" + str(x) + ", " + str(y) + ")", col,
                     get_color(expected_image, x, y))
+
+
+def test_green():
+    """Returns whether or not the green filter is applied to the whole image. If
+    the filter isn't applied everywhere, it indicates where it isn't.
+
+    >>> test_green()
+    Test passed
+    >>> test_green()
+    Test failed at:  (325, 232) (r,g,b) (1, 40, 0)
+    """
+    green = green_channel()
+    for pixel in green:
+        x, y, (r, g, b) = pixel
+        if (r, g, b) != (r - r, g, b - b):
+            print("Test failed at: ", (x, y), "(r,g,b)", (r, g, b))
+    if (r, g, b) == (r - r, g, b - b):
+        print("Test passed")

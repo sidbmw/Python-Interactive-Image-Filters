@@ -27,6 +27,44 @@ def _adjust_component(original_val: int) -> int:
     return new_val
 
 
+def check_equal(description: str, outcome, expected) -> None:
+    """
+    Author: Prof. Donald L. Bailey
+    Print a "passed" message if outcome and expected have same type and
+    are equal (as determined by the == operator); otherwise, print a
+    "fail" message.
+
+    Parameter description should provide information that will help us
+    interpret the test results; e.g., the call expression that yields
+    outcome.
+
+    Parameters outcome and expected are typically the actual value returned
+    by a call expression and the value we expect a correct implementation
+    of the function to return, respectively. Both parameters must have the same
+    type, which must be a type for which == is used to determine if two values
+    are equal. Don't use this function to check if floats, lists of floats,
+    tuples of floats, etc. are equal.
+    """
+    outcome_type = type(outcome)
+    expected_type = type(expected)
+    if outcome_type != expected_type:
+
+        # The format method is explained on pages 119-122 of
+        # 'Practical Programming', 3rd ed.
+
+        print("{0} FAILED: expected ({1}) has type {2}, " \
+              "but outcome ({3}) has type {4}".
+              format(description, expected,
+                     str(expected_type).strip('<class> '),
+                     outcome, str(outcome_type).strip('<class> ')))
+    elif outcome != expected:
+        print("{0} FAILED: expected {1}, got {2}".
+              format(description, expected, outcome))
+    else:
+        print("{0} PASSED".format(description))
+    print("------")
+
+
 def grayscale(image: Image) -> Image:
     """Author: Prof. Donald Bailey
     Return a grayscale copy of image.
@@ -282,6 +320,40 @@ def blue_channel(image: Image) -> Image:
         set_color(new_image, x, y, blue_increased)
 
     return new_image
+
+
+def red_channel(original_image: Image) -> Image:
+    """Returns the red channel of image without having modified it.
+    - Function written by Malak Abdou - 101139692
+
+    >>> red_channel(original_image)
+    <Cimpl.Image object at 0x000001C447BDFAC8>
+    """
+    red_filter = copy(original_image)
+    for pixel in original_image:
+        x, y, (r, g, b) = pixel
+        red = create_color(r, 0, 0)
+        set_color(red_filter, x, y, red)
+    return red_filter
+
+
+def green_channel() -> Image:
+    """Returns the green chanel of the initial image without having modified it.
+    -Function written by Leanne Matamoros - 101147405
+
+    >>> green_channel(original_image)
+    <Cimpl.Image object at 0x0000028A06CD6D88>
+    """
+    file = choose_file()
+    original_image = load_image(file)
+    green_filter = copy(original_image)
+
+    for pixel in original_image:
+        x, y, (r, g, b) = pixel
+        green_coloration = create_color(0, g, 0)
+        set_color(green_filter, x, y, green_coloration)
+
+    return green_filter
 
 
 def three_tone(image: Image, colour_1: str, colour_2: str, colour_3: str) \
