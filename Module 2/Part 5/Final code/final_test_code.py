@@ -374,58 +374,58 @@ def test_sepia() -> None:
                         get_color(expected, x, y))
 
 
-def test_red() -> None:
-    """Tests the red_channel function. Returns PASS if all pixels in red_image
-    have 0 green and blue components.
-    - Function written by Malak Abdou - 101139692
+# def test_red() -> None:
+#     """Tests the red_channel function. Returns PASS if all pixels in red_image
+#     have 0 green and blue components.
+#     - Function written by Malak Abdou - 101139692
+#
+#     >>> test_red()
+#     PASS
+#     """
+#
+#     show(red_image)
+#     r, g, b = get_color(red_image, 0, 0)
+#     if g == 0 and b == 0:
+#         print('PASS')
+#     else:
+#         print('FAIL')
 
-    >>> test_red()
-    PASS
-    """
 
-    show(red_image)
-    r, g, b = get_color(red_image, 0, 0)
-    if g == 0 and b == 0:
-        print('PASS')
-    else:
-        print('FAIL')
-
-
-def test_blue_channel() -> None:
-    """Function tests the blue_channel filter.
-    -Function written by Nathan Gomes - 101143780
-
-    >>> blue_channel_test()
-    (0, 0) PASSED
-    ------
-    (1, 0) PASSED
-    ------
-    (2, 0) PASSED
-    ------
-    >>> blue_channel_test()
-    (0, 0) PASSED
-    ------
-    (1, 0) FAILED: expected Color(red=0, green=0, blue=202), got Color(red=0, green=0, blue=201)
-    ------
-    (2, 0) PASSED
-    ------
-    """
-
-    original_image = create_image(3, 1)
-    set_color(original_image, 0, 0, create_color(255, 255, 255))
-    set_color(original_image, 1, 0, create_color(78, 146, 201))
-    set_color(original_image, 2, 0, create_color(167, 64, 29))
-
-    expected_image = create_image(3, 1)
-    set_color(expected_image, 0, 0, create_color(0, 0, 255))
-    set_color(expected_image, 1, 0, create_color(0, 0, 201))
-    set_color(expected_image, 2, 0, create_color(0, 0, 29))
-
-    blue_image = blue_channel(original_image)
-
-    for x, y, col in blue_image:
-        check_equal("(" + str(x) + ", " + str(y) + ")", col,
-                    get_color(expected_image, x, y))
+# def test_blue_channel() -> None:
+#     """Function tests the blue_channel filter.
+#     -Function written by Nathan Gomes - 101143780
+#
+#     >>> blue_channel_test()
+#     (0, 0) PASSED
+#     ------
+#     (1, 0) PASSED
+#     ------
+#     (2, 0) PASSED
+#     ------
+#     >>> blue_channel_test()
+#     (0, 0) PASSED
+#     ------
+#     (1, 0) FAILED: expected Color(red=0, green=0, blue=202), got Color(red=0, green=0, blue=201)
+#     ------
+#     (2, 0) PASSED
+#     ------
+#     """
+#
+#     original_image = create_image(3, 1)
+#     set_color(original_image, 0, 0, create_color(255, 255, 255))
+#     set_color(original_image, 1, 0, create_color(78, 146, 201))
+#     set_color(original_image, 2, 0, create_color(167, 64, 29))
+#
+#     expected_image = create_image(3, 1)
+#     set_color(expected_image, 0, 0, create_color(0, 0, 255))
+#     set_color(expected_image, 1, 0, create_color(0, 0, 201))
+#     set_color(expected_image, 2, 0, create_color(0, 0, 29))
+#
+#     blue_image = blue_channel(original_image)
+#
+#     for x, y, col in blue_image:
+#         check_equal("(" + str(x) + ", " + str(y) + ")", col,
+#                     get_color(expected_image, x, y))
 
 
 def test_posterize() -> None:
@@ -552,19 +552,19 @@ def test_adjust_component() -> None:
                     get_color(expected_image, x, y))
 
 
-def test_green():
-    """Returns whether or not the green filter is applied to the whole image. If
-    the filter isn't applied everywhere, it indicates where it isn't.
-
-    >>> test_green()
-    Test passed
-    >>> test_green()
-    Test failed at:  (325, 232) (r,g,b) (1, 40, 0)
-    """
-    green = green_channel()
-    for pixel in green:
-        x, y, (r, g, b) = pixel
-        if (r, g, b) != (r - r, g, b - b):
-            print("Test failed at: ", (x, y), "(r,g,b)", (r, g, b))
-    if (r, g, b) == (r - r, g, b - b):
-        print("Test passed")
+# def test_green():
+#     """Returns whether or not the green filter is applied to the whole image. If
+#     the filter isn't applied everywhere, it indicates where it isn't.
+#
+#     >>> test_green()
+#     Test passed
+#     >>> test_green()
+#     Test failed at:  (325, 232) (r,g,b) (1, 40, 0)
+#     """
+#     green = green_channel()
+#     for pixel in green:
+#         x, y, (r, g, b) = pixel
+#         if (r, g, b) != (r - r, g, b - b):
+#             print("Test failed at: ", (x, y), "(r,g,b)", (r, g, b))
+#     if (r, g, b) == (r - r, g, b - b):
+#         print("Test passed")

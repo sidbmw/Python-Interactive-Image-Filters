@@ -89,21 +89,21 @@ def grayscale(image: Image) -> Image:
     return new_image
 
 
-def combine(red_pic: Image, green_pic: Image, blue_pic: Image) -> Image:
-    # Author: Siddharth Natamai - 101143016
-    """Combines the inputted images and returns the final image
-    >>> combine(image_1, image_2, image_3)
-    <Cimpl.Image object at 0x7fab575d3ad0>
-    """
-    final_image = copy(red_pic)
-    for pixel in final_image:
-        x, y, (r, g, b) = pixel
-        blue_colour = get_color(blue_pic, x, y)
-        green_colour = get_color(green_pic, x, y)
-        new_colours = create_color(r, green_colour[1], blue_colour[2])
-        set_color(final_image, x, y, new_colours)
-
-    return final_image
+# def combine(red_pic: Image, green_pic: Image, blue_pic: Image) -> Image:
+#     # Author: Siddharth Natamai - 101143016
+#     """Combines the inputted images and returns the final image
+#     >>> combine(image_1, image_2, image_3)
+#     <Cimpl.Image object at 0x7fab575d3ad0>
+#     """
+#     final_image = copy(red_pic)
+#     for pixel in final_image:
+#         x, y, (r, g, b) = pixel
+#         blue_colour = get_color(blue_pic, x, y)
+#         green_colour = get_color(green_pic, x, y)
+#         new_colours = create_color(r, green_colour[1], blue_colour[2])
+#         set_color(final_image, x, y, new_colours)
+#
+#     return final_image
 
 
 def posterize(original_image: Image) -> Image:
@@ -303,57 +303,57 @@ def detect_edges(original_image: Image, threshold: float) -> Image:
     return original2
 
 
-def blue_channel(image: Image) -> Image:
-    """Function takes an image and applies a blue channel filter over the image
-    without affecting the original image and returns a filtered new image.
-    -Function written by Nathan Gomes - 101143780
-
-    >>> original_image = load_image(choose_file())
-    >>> blue_image = blue_channel(original_image)
-    >>> show(blue_image)
-    """
-
-    new_image = copy(image)
-    for pixel in image:
-        x, y, (r, g, b) = pixel
-        blue_increased = create_color(r - r, g - g, b)
-        set_color(new_image, x, y, blue_increased)
-
-    return new_image
-
-
-def red_channel(original_image: Image) -> Image:
-    """Returns the red channel of image without having modified it.
-    - Function written by Malak Abdou - 101139692
-
-    >>> red_channel(original_image)
-    <Cimpl.Image object at 0x000001C447BDFAC8>
-    """
-    red_filter = copy(original_image)
-    for pixel in original_image:
-        x, y, (r, g, b) = pixel
-        red = create_color(r, 0, 0)
-        set_color(red_filter, x, y, red)
-    return red_filter
+# def blue_channel(image: Image) -> Image:
+#     """Function takes an image and applies a blue channel filter over the image
+#     without affecting the original image and returns a filtered new image.
+#     -Function written by Nathan Gomes - 101143780
+#
+#     >>> original_image = load_image(choose_file())
+#     >>> blue_image = blue_channel(original_image)
+#     >>> show(blue_image)
+#     """
+#
+#     new_image = copy(image)
+#     for pixel in image:
+#         x, y, (r, g, b) = pixel
+#         blue_increased = create_color(r - r, g - g, b)
+#         set_color(new_image, x, y, blue_increased)
+#
+#     return new_image
 
 
-def green_channel() -> Image:
-    """Returns the green chanel of the initial image without having modified it.
-    -Function written by Leanne Matamoros - 101147405
+# def red_channel(original_image: Image) -> Image:
+#     """Returns the red channel of image without having modified it.
+#     - Function written by Malak Abdou - 101139692
+#
+#     >>> red_channel(original_image)
+#     <Cimpl.Image object at 0x000001C447BDFAC8>
+#     """
+#     red_filter = copy(original_image)
+#     for pixel in original_image:
+#         x, y, (r, g, b) = pixel
+#         red = create_color(r, 0, 0)
+#         set_color(red_filter, x, y, red)
+#     return red_filter
 
-    >>> green_channel(original_image)
-    <Cimpl.Image object at 0x0000028A06CD6D88>
-    """
-    file = choose_file()
-    original_image = load_image(file)
-    green_filter = copy(original_image)
 
-    for pixel in original_image:
-        x, y, (r, g, b) = pixel
-        green_coloration = create_color(0, g, 0)
-        set_color(green_filter, x, y, green_coloration)
-
-    return green_filter
+# def green_channel() -> Image:
+#     """Returns the green chanel of the initial image without having modified it.
+#     -Function written by Leanne Matamoros - 101147405
+#
+#     >>> green_channel(original_image)
+#     <Cimpl.Image object at 0x0000028A06CD6D88>
+#     """
+#     file = choose_file()
+#     original_image = load_image(file)
+#     green_filter = copy(original_image)
+#
+#     for pixel in original_image:
+#         x, y, (r, g, b) = pixel
+#         green_coloration = create_color(0, g, 0)
+#         set_color(green_filter, x, y, green_coloration)
+#
+#     return green_filter
 
 
 def three_tone(image: Image, colour_1: str, colour_2: str, colour_3: str) \
