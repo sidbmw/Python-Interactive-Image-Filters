@@ -1,11 +1,11 @@
 """ ECOR 1051 Fall 2019
 
 Function for testing the improved edge detection filter.
-Last edited: Nov. 21, 2019
+Last edited: Nov. 24, 2019
 """
 
-from Cimpl import *
-from L5_6_P5_imp_edge import *
+from Cimpl import create_color, create_image, get_color, show, set_color
+from L5_6_P5_imp_edge import detect_edges_better
 
 def check_equal(pixel: str, outcome, expected) -> None:
         if type(outcome) != type(expected):
@@ -20,7 +20,7 @@ def check_equal(pixel: str, outcome, expected) -> None:
         else:
                 print("{0} PASSED".format(pixel))
                 
-def test_detect_edges_better():
+def test_detect_edges_better() -> None:
         """Returns the information on whether or not the filter 
         detect_edges_better works properly or not. The function returns the
         pixels that have passed the test. All pixels have to pass in order to
@@ -72,7 +72,7 @@ def test_detect_edges_better():
         
         threshold = 15 #Assume threshold chosen is 15. 
         
-        edges_image =  detect_edges_better(original, threshold)  
+        edges_image = detect_edges_better(original, threshold)  
     
         for x, y, color in edges_image:
         
