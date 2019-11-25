@@ -1,11 +1,5 @@
-from Cimpl import create_color, create_image, get_color, set_color, Image
-from L5_6_P4_extreme import extreme_contrast
-from L5_6_P4_sepia import sepia
-from L5_6_P4_three_tone import three_tone
-from L5_6_P4_two_tone import two_tone as tt
-from L5_6_P5_edge import detect_edges
-from L5_6_P5_imp_edge import detect_edges_better
-from test_grayscale import check_equal
+from Cimpl import set_color, create_color, get_color, create_image, Image
+from final_code import *
 
 
 def check_equal(description: str, outcome, expected) -> None:
@@ -412,3 +406,133 @@ def test_sepia() -> None:
         for x, y, color in edges_image:
             check_equal('(' + str(x) + ',' + str(y) + ')', color,
                         get_color(expected, x, y))
+
+
+def test_blue_channel() -> None:
+    """Function tests the blue_channel filter.
+    -Function written by Nathan Gomes - 101143780
+
+    >>> blue_channel_test()
+    (0, 0) PASSED
+    ------
+    (1, 0) PASSED
+    ------
+    (2, 0) PASSED
+    ------
+    >>> blue_channel_test()
+    (0, 0) PASSED
+    ------
+    (1, 0) FAILED: expected Color(red=0, green=0, blue=202), got Color(red=0, green=0, blue=201)
+    ------
+    (2, 0) PASSED
+    ------
+    """
+
+    original_image = create_image(3, 1)
+    set_color(original_image, 0, 0, create_color(255, 255, 255))
+    set_color(original_image, 1, 0, create_color(78, 146, 201))
+    set_color(original_image, 2, 0, create_color(167, 64, 29))
+
+    expected_image = create_image(3, 1)
+    set_color(expected_image, 0, 0, create_color(0, 0, 255))
+    set_color(expected_image, 1, 0, create_color(0, 0, 201))
+    set_color(expected_image, 2, 0, create_color(0, 0, 29))
+
+    blue_image = blue_channel(original_image)
+
+    for x, y, col in blue_image:
+        check_equal("(" + str(x) + ", " + str(y) + ")", col,
+                    get_color(expected_image, x, y))
+
+
+def test_posterize() -> None:
+    """Function is called without any arguments, calls the posterize filter
+    within the function body on a preset image and tests it.
+    Function Author: Nathan Gomes - 101143780
+
+    >>> test_posterize()
+    (0, 0) PASSED
+    ------
+    (1, 0) PASSED
+    ------
+    (2, 0) PASSED
+    ------
+    >>> test_posterize()
+    (0, 0) PASSED
+    ------
+    (1, 0) FAILED: expected Color(red=31, green=31, blue=32), got Color(red=31, green=31, blue=31)
+    ------
+    (2, 0) PASSED
+    ------
+    """
+
+    original_image = create_image(3, 1)
+    set_color(original_image, 0, 0, create_color(255, 255, 255))
+    set_color(original_image, 1, 0, create_color(0, 0, 0))
+    set_color(original_image, 2, 0, create_color(167, 97, 29))
+    # These pixels represent two boundary cases and one in which each
+    # component represents a different quadrant.
+
+    expected_image = create_image(3, 1)
+    set_color(expected_image, 0, 0, create_color(223, 223, 223))
+    set_color(expected_image, 1, 0, create_color(31, 31, 31))
+    set_color(expected_image, 2, 0, create_color(159, 95, 31))
+
+    poster_image = posterize(original_image)
+
+    for x, y, col in poster_image:
+        check_equal("(" + str(x) + ", " + str(y) + ")", col,
+                    get_color(expected_image, x, y))
+
+
+def flip_horizontal_test() -> None:
+    """Function Author: Nathan Gomes - 101143780
+    A test function for flip_horizontal filter.
+
+    >>> flip_horizontal_test()
+    Checking pixel @(0, 0) PASSED
+    ------
+    Checking pixel @(1, 0) PASSED
+    ------
+    Checking pixel @(0, 1) PASSED
+    ------
+    Checking pixel @(1, 1) PASSED
+    ------
+    Checking pixel @(0, 2) PASSED
+    ------
+    Checking pixel @(1, 2) PASSED
+    ------
+    Checking pixel @(0, 3) PASSED
+    ------
+    Checking pixel @(1, 3) PASSED
+    ------
+    """
+
+    original_image = create_image(2, 4)
+    set_color(original_image, 0, 0, create_color(0, 0, 0))
+    set_color(original_image, 0, 1, create_color(255, 255, 255))
+    set_color(original_image, 0, 2, create_color(0, 0, 0))
+    set_color(original_image, 0, 3, create_color(255, 255, 255))
+    set_color(original_image, 1, 0, create_color(255, 255, 255))
+    set_color(original_image, 1, 1, create_color(0, 0, 0))
+    set_color(original_image, 1, 2, create_color(255, 255, 255))
+    set_color(original_image, 1, 3, create_color(0, 0, 0))
+
+    # I only used two colours in my pixels because the positions of those two
+    # colours will be more than enough to demonstrate rotation.
+
+    expected_image = create_image(2, 4)
+    set_color(expected_image, 0, 0, create_color(255, 255, 255))
+    set_color(expected_image, 0, 1, create_color(0, 0, 0))
+    set_color(expected_image, 0, 2, create_color(255, 255, 255))
+    set_color(expected_image, 0, 3, create_color(0, 0, 0))
+    set_color(expected_image, 1, 0, create_color(0, 0, 0))
+    set_color(expected_image, 1, 1, create_color(255, 255, 255))
+    set_color(expected_image, 1, 2, create_color(0, 0, 0))
+    set_color(expected_image, 1, 3, create_color(255, 255, 255))
+
+    horizontal_image = flip_horizontal(original_image)
+
+    for x, y, col in horizontal_image:
+        check_equal("Checking pixel @(" + str(x) + ', ' + str(y) + ')', col,
+                    get_color(expected_image, x, y))

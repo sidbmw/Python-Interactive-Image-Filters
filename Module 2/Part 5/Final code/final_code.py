@@ -1,5 +1,6 @@
-from Cimpl import create_color, get_color, Image, load_image, show, \
-    choose_file, copy, set_color, get_height, get_width
+from Cimpl import get_height, get_width, choose_file, load_image, copy, \
+    set_color, create_color, \
+    get_color, Image, show
 
 
 def _adjust_component(original_val: int) -> int:
@@ -262,3 +263,164 @@ def detect_edges(original_image: Image, threshold: float) -> Image:
                 set_color(original2, x, y, white)
 
     return original2
+
+
+def blue_channel(image: Image) -> Image:
+    """Function takes an image and applies a blue channel filter over the image
+    without affecting the original image and returns a filtered new image.
+    -Function written by Nathan Gomes - 101143780
+
+    >>> original_image = load_image(choose_file())
+    >>> blue_image = blue_channel(original_image)
+    >>> show(blue_image)
+    """
+
+    new_image = copy(image)
+    for pixel in image:
+        x, y, (r, g, b) = pixel
+        blue_increased = create_color(r - r, g - g, b)
+        set_color(new_image, x, y, blue_increased)
+
+    return new_image
+
+
+def three_tone(image: Image, colour_1: str, colour_2: str, colour_3: str) \
+        -> Image:
+    """
+    Function takes an image and three colours as strings from the given
+    list:
+    black
+    white
+    red
+    lime
+    blue
+    yellow
+    cyan
+    magenta
+    gray
+
+    Function returns an image in three tones as per the colours given in the
+    second, third and fourth function parameters, decided by an individual
+    pixel's brightness.
+    -Function written by Nathan Gomes, 101143780
+
+    >>> image_1 = load_image(choose_file())
+    >>> three_tone_image = three_tone(image_1, "blue", "gray", "white")
+    >>> show(three_tone_image)
+    >>> three_tone(image_1, "yellow", "cyan", "purple")
+    #Error because colour passed ("purple") is not in the given list
+    """
+
+    black = create_color(0, 0, 0)
+    white = create_color(255, 255, 255)
+    red = create_color(255, 0, 0)
+    lime = create_color(0, 255, 0)
+    blue = create_color(0, 0, 255)
+    yellow = create_color(255, 255, 0)
+    cyan = create_color(0, 255, 255)
+    magenta = create_color(255, 0, 255)
+    gray = create_color(128, 128, 128)
+
+    colours = [("black", black), ("white", white), ("red", red),
+               ("lime", lime), ("blue", blue), ("yellow", yellow),
+               ("cyan", cyan), ("magenta", magenta), ("gray", gray)]
+
+    new_image = copy(image)
+    for pixel in new_image:
+        x, y, (r, g, b) = pixel
+        average = (r + g + b) / 3
+        if (average >= 0) and (average < 85):
+            for i in range(len(colours)):
+                if colour_1 == colours[i][0]:
+                    set_color(new_image, x, y, colours[i][1])
+        elif (average > 84) and (average < 171):
+            for i in range(len(colours)):
+                if colour_2 == colours[i][0]:
+                    set_color(new_image, x, y, colours[i][1])
+        elif (average > 170) and (average < 256):
+            for i in range(len(colours)):
+                if colour_3 == colours[i][0]:
+                    set_color(new_image, x, y, colours[i][1])
+
+    return new_image
+
+
+def two_tone(image: Image, colour_1: str, colour_2: str) -> Image:
+    """Function an image and two colours as strings from the given list:
+    black
+    white
+    red
+    lime
+    blue
+    yellow
+    cyan
+    magenta
+    gray
+
+    Function returns an image in two tones as per the colours given in the
+    second and third function parameters, decided by an individual pixel's
+    brightness.
+    -Function written by Nathan Gomes, 101143780
+
+    >>> image = load_image(choose_file())
+    >>> two_tone_image = two_tone(image, "red", "gray")
+    >>> show(two_tone_image)
+    >>> two_tone(image, "black", "pink")
+    #Error because colour passed ("pink") is not in the given list
+    """
+
+    black = create_color(0, 0, 0)
+    white = create_color(255, 255, 255)
+    red = create_color(255, 0, 0)
+    lime = create_color(0, 255, 0)
+    blue = create_color(0, 0, 255)
+    yellow = create_color(255, 255, 0)
+    cyan = create_color(0, 255, 255)
+    magenta = create_color(255, 0, 255)
+    gray = create_color(128, 128, 128)
+
+    colours = [("black", black), ("white", white), ("red", red),
+               ("lime", lime), ("blue", blue), ("yellow", yellow),
+               ("cyan", cyan), ("magenta", magenta), ("gray", gray)]
+
+    new_image = copy(image)
+    for pixel in new_image:
+        x, y, (r, g, b) = pixel
+        average = (r + g + b) / 3
+
+        if (average >= 0) and (average < 128):
+            for i in range(len(colours)):
+                if colour_1 == colours[i][0]:
+                    set_color(new_image, x, y, colours[i][1])
+
+        elif (average > 127) and (average < 256):
+            for i in range(len(colours)):
+                if colour_2 == colours[i][0]:
+                    set_color(new_image, x, y, colours[i][1])
+
+    return new_image
+
+
+def flip_vertical(image: Image) -> Image:
+    """Function author : Nathan Gomes - 101143780
+    Function takes an image and returns a copy of the image that has been
+    flipped vertically (across the "y" axis in an x-y co-ordinate system).
+
+    >>> original_image = load_image("filename")
+    >>> flip_vertical(original_image)
+    <Cimpl.Image object at 0x000001A90D7A7408>
+    """
+
+    new_image = copy(image)
+    mid_pixel = get_width(new_image) // 2
+    width = get_width(new_image)
+    height = get_height(new_image)
+
+    for x in range(mid_pixel):
+        for y in range(height):
+            r, g, b = get_color(image, x, y)
+            new_r, new_g, new_b = get_color(image, abs(width - x) - 1, y)
+            set_color(new_image, x, y, create_color(new_r, new_g, new_b))
+            set_color(new_image, width - x - 1, y, create_color(r, g, b))
+
+    return new_image
