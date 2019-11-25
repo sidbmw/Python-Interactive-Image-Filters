@@ -536,3 +536,34 @@ def flip_horizontal_test() -> None:
     for x, y, col in horizontal_image:
         check_equal("Checking pixel @(" + str(x) + ', ' + str(y) + ')', col,
                     get_color(expected_image, x, y))
+
+
+def test_adjust_component() -> None:
+    """Function tests the helper function "_adjust_component."
+    -Written by Nathan Gomes, 101143780
+
+    >>> test_adjust_component()
+    (0, 0) PASSED
+    ------
+    >>> test_adjust_component()
+    (0, 0) FAILED: expected Color(red=31, green=95, blue=158), got Color(red=31, green=95, blue=159)
+    ------
+
+    """
+
+    original_image = create_image(1, 1)
+    set_color(original_image, 0, 0, create_color(50, 90, 155))
+
+    expected_image = create_image(1, 1)
+    set_color(expected_image, 0, 0, create_color(31, 95, 159))
+
+    r, g, b = get_color(original_image, 0, 0)
+    adjusted_image = create_image(1, 1)
+    set_color(adjusted_image, 0, 0,
+              create_color(_adjust_component(r),
+                           _adjust_component(g),
+                           _adjust_component(b)))
+
+    for x, y, col in adjusted_image:
+        check_equal("(" + str(x) + ", " + str(y) + ")", col,
+                    get_color(expected_image, x, y))
