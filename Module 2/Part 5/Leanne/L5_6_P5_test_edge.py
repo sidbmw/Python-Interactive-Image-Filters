@@ -1,8 +1,8 @@
+"""ECOR 1051 - Fall 2019
+Group L5_6 - Milestone 2, P5 
+Submitted on: 22/11/2019
 """
-Milestone 2
-November 22nd 2019 
-L5_6
-"""
+
 from L5_6_P5_edge import detect_edges
 from Cimpl import choose_file, create_color, create_image, get_color,\
                   set_color, load_image, Image
