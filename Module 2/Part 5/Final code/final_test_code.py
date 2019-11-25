@@ -9,7 +9,7 @@ from final_code import two_tone as tt
 def test_detect_edge() -> None:
     """Returns whether the edge detection filter works and if it didn't,\
     indicates where it wasn't applied.
-    -Test function written by Leanne Matamoros - 10114740
+    -Test function written by Leanne Matamoros - 101147405
 
     >>> test_edge()
     Checking pixel @(0, 0) PASSED
