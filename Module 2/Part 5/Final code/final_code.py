@@ -150,7 +150,8 @@ def flip_horizontal(original_image: Image) -> Image:
 
 def sepia(original_image: Image) -> Image:
     """Returns a black and white image which has been tinted yellow.
-
+    - Function written by Leanne Matamoros - 101147405
+    
     >>> original_image = load_image(choose_file())
     >>> sepia(original_image)
     <Cimpl.Image object at 0x00000212C566DD88>
