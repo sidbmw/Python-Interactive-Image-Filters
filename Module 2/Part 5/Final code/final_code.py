@@ -155,7 +155,6 @@ def sepia(original_image: Image) -> Image:
     >>> original_image = load_image(choose_file())
     >>> sepia(original_image)
     <Cimpl.Image object at 0x00000212C566DD88>
-
     """
     new_image = copy(original_image)
     sepia_filter = grayscale(new_image)
