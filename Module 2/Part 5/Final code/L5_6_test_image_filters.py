@@ -1,9 +1,9 @@
 from Cimpl import set_color, create_color, get_color, create_image, Image
-from final_code import _adjust_component, posterize, flip_horizontal, sepia, \
+from L5_6_image_filters import _adjust_component, posterize, flip_horizontal, sepia, \
     detect_edges_better, extreme_contrast, detect_edges, blue_channel, \
     three_tone, flip_vertical, check_equal
 
-from final_code import two_tone as tt
+from L5_6_image_filters import two_tone as tt
 
 
 def test_detect_edge() -> None:
