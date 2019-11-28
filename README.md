@@ -22,7 +22,7 @@ pip install pillow
 Install/Update python3, install Pillow and clone the repo! :)
 ```
 
-## Author
+## Authors
 
 👤 **Siddharth Natamai, Leanne Matamoros, Nathan Gomes, Malak Abdou**
 
