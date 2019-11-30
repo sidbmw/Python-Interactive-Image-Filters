@@ -1,3 +1,7 @@
+"""
+Author: Siddharth Natamai - 101143016
+"""
+
 from Cimpl import load_image, choose_file, save_as, show
 from L5_6_image_filters import posterize, flip_horizontal, sepia, \
     detect_edges_better, extreme_contrast, detect_edges, three_tone, \
