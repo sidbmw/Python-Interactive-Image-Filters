@@ -27,6 +27,9 @@ Install/Update python3, install Pillow and clone the repo! :)
 👤 **Siddharth Natamai, Leanne Matamoros, Nathan Gomes, Malak Abdou**
 
 * Github: [@sidbmw](https://github.com/sidbmw)
+* Github: [@Leanne401](https://github.com/Leanne401)
+* Github: [@nattynates](https://github.com/nattynates)
+* Github: [@malakabdou](https://github.com/malakabdou)
 
 ## Show your support
 
