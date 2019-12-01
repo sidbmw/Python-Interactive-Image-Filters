@@ -1,4 +1,5 @@
 Python Interactive Image Filters Version 1.0.0 Last Updated 11/28/19
+
 ???? $$$$$$ # we need to put an actual price and it needs to be in the line bellow thhe program name
 A photo-editing program written in Python that allows users to apply a variety of filters.
 
