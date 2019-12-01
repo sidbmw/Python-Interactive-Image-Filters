@@ -9,6 +9,7 @@ Install Pillow
 Clone the repository
 
 Usage
+
 Python Interactive Image Filters is used to return a copy of the original image to which some filters chosen by the user from a filter
 bank have been applied. The new modified image is displayed everytime a new filter is applied and is only saved after the user props it to
 do so. # it says we need to use shell comands is this what they mean or are we supposed to add shell comands after ??
