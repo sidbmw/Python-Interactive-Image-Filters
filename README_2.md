@@ -20,10 +20,10 @@ do so. # it says we need to use shell comands is this what they mean or are we s
 
 Credits
 
-extreme contrast, detect edges - Malak Abdou
-sepia, detect edges better - Leanne Matamoros
-two tone, three tone, vertical flip - Nathan Gomes
-posterize, horizontal flip - Siddharth Natamai
+extreme contrast, detect edges - Malak Abdou      
+sepia, detect edges better - Leanne Matamoros    
+two tone, three tone, vertical flip - Nathan Gomes   
+posterize, horizontal flip - Siddharth Natamai   
 
 
 Contact information
