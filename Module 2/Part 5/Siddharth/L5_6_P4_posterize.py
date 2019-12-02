@@ -1,25 +1,22 @@
-from Cimpl import copy, set_color, create_color, Image
+from Cimpl import copy, set_color, create_color, Image, show, choose_file, load_image
 
 
-# file = choose_file()
-# original_image = load_image(file)
+file = choose_file()
+original_image = load_image(file)
 
 
 def posterize(original_image: Image) -> Image:
     """ Author: Siddharth Natamai - 1011403016
         Date: Nov 17, 2019
 
-    Returns a image after applying a posterizing filter based on values from
-    the_adjust_component function
+    Returns a image after applying a posterizing filter based on values from the _adjust_component function
     >>> posterize(original_image)
     <Cimpl.Image object at 0x7f7ba88dbd10>
     """
     new_image = copy(original_image)
     for pixel in original_image:
         x, y, (r, g, b) = pixel
-        set_color(original_image, x, y, create_color(_adjust_component(r),
-                                                     _adjust_component(g),
-                                                     _adjust_component(b)))
+        set_color(new_image, x, y, create_color(_adjust_component(r), _adjust_component(g), _adjust_component(b)))
     return new_image
 
 
@@ -47,5 +44,5 @@ def _adjust_component(original_val: int) -> int:
 
 # print(_adjust_component(192))
 #
-# show(posterize(original_image))
+show(posterize(original_image))
 # save(posterize(original_image))
