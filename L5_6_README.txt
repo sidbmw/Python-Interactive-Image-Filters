@@ -1,6 +1,6 @@
 Python Interactive Image Filters Version 1.0.0
 Last Updated 12/01/19
-Price: $5.00 (CAD)
+Price: Free
 
 Description:
 
@@ -31,6 +31,16 @@ when the user is prompted to type the first letter of their choice of
 filter. The new modified image is displayed every time a new filter is 
 applied and is only saved after the user props it to do so.
 
+In a shell, run 'python3 L5_6_interactive_ui_sid.py'
+Then, the following should be printed to a terminal. Follow the steps shown:
+
+Cimpl 1.04; October 6, 2017
+L)oad image	S)ave-as
+2)-tone	3)-tone	X)treme contrast	T)int sepia	P)osterize
+E)dge detect	I)mproved edge detect	V)ertical flip	H)orizontal Flip
+Q)uit
+
+: 'Enter input here <---'
 
 Credits:
 
@@ -49,11 +59,12 @@ Student Number: 101143016
 
 License:
 
+
 MIT License
 
-Copyright (c) [2019] [Siddharth Natamai, Malak Abdou, Nathan Gomes, Malak Abdou]
+Copyright (c) 2019 Siddharth Natamai, Leanne Matamoros, Nathan Gomes, Malak Abdou
 
-Permission is hereby granted, after paying a charge of $5, to any person obtaining a copy
+Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
