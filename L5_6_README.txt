@@ -1,6 +1,6 @@
 Python Interactive Image Filters Version 1.0.0
 Last Updated 12/01/19
-Price: Free
+Price: $5.00 (CAD)
 
 Description:
 
@@ -49,12 +49,11 @@ Student Number: 101143016
 
 License:
 
-
 MIT License
 
-Copyright (c) 2019 Siddharth Natamai, Leanne Matamoros, Nathan Gomes, Malak Abdou
+Copyright (c) [2019] [Siddharth Natamai, Malak Abdou, Nathan Gomes, Malak Abdou]
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
+Permission is hereby granted, after paying a charge of $5, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
