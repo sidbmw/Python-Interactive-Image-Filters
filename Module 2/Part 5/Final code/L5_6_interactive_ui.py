@@ -1,18 +1,19 @@
-"""
-Author: Siddharth Natamai - 101143016
+"""ECOR 1051 - Milestone 3
+Group: L5_6
+Date of Submission: Dec 1, 2019
+Authors: Siddharth Natamai - 101143016
         Leanne Matamoros - 101147405
         Malak Abdou - 101139692
         Nathan Gomes - 101143780
 
-Date: Dec 1, 2019
 Version: 1.0.0
 """
 
 from Cimpl import load_image, choose_file, save_as, show
+
 from L5_6_image_filters import posterize, flip_horizontal, sepia, \
     detect_edges_better, extreme_contrast, detect_edges, three_tone, \
     flip_vertical
-
 from L5_6_image_filters import two_tone as tt
 
 inputted_task = ""
@@ -25,46 +26,35 @@ while inputted_task != "Q":
     inputted_task = inputted_task.upper()
     if inputted_task == "L":
         image = load_image(choose_file())
+        show(image)
     elif inputted_task == "2":
         if not (image is None):
-
-            color_value_one = "yellow"
-            color_value_two = "cyan"
-            image = tt(image, color_value_one, color_value_two)
+            image = tt(image, "yellow", "cyan")
             show(image)
-
         else:
-            print("No image loaded")
+            print("No image loaded.")
     elif inputted_task == "3":
         if not (image is None):
-            color_value_one = "yellow"
-            color_value_two = "magenta"
-            color_value_three = "cyan"
-            image = three_tone(image, color_value_one, color_value_two,
-                               color_value_three)
+            image = three_tone(image, "yellow", "magenta", "cyan")
             show(image)
-
         else:
-            print("No image loaded")
+            print("No image loaded.")
     elif inputted_task == "X":
         if not (image is None):
             image = extreme_contrast(image)
             show(image)
-
         else:
             print("No image loaded")
     elif inputted_task == "T":
         if not (image is None):
             image = sepia(image)
             show(image)
-
         else:
             print("No image loaded")
     elif inputted_task == "P":
         if not (image is None):
             image = posterize(image)
             show(image)
-
         else:
             print("No image loaded")
     elif inputted_task == "E":
@@ -72,7 +62,6 @@ while inputted_task != "Q":
             threshold = float(input("Input a threshold value: "))
             image = detect_edges(image, threshold)
             show(image)
-
         else:
             print("No image loaded")
     elif inputted_task == "I":
@@ -80,21 +69,18 @@ while inputted_task != "Q":
             threshold = float(input("Input a threshold value: "))
             image = detect_edges_better(image, threshold)
             show(image)
-
         else:
             print("No image loaded")
     elif inputted_task == "V":
         if not (image is None):
             image = flip_vertical(image)
             show(image)
-
         else:
             print("No image loaded")
     elif inputted_task == "H":
         if not (image is None):
             image = flip_horizontal(image)
             show(image)
-
         else:
             print("No image loaded")
     elif inputted_task == "S":
@@ -102,6 +88,8 @@ while inputted_task != "Q":
             filename = input(
                 "Input the filename with file extension "
                 "(e.g. new_image.jpg): ")
+            print("test")
+            show(image)
             save_as(image, filename)
         else:
             print("No image loaded")

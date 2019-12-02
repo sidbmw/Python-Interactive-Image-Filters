@@ -1,8 +1,14 @@
 """ECOR 1051 - Milestone 3
-L5-6
-Date of submission: Dec. 01 2019
-Authors: Siddharth Natamai, Malak Abdou, Nathan Gomes, Leanne Matamoros
+Group: L5_6
+Date of Submission: Dec 1, 2019
+Authors: Siddharth Natamai - 101143016
+        Leanne Matamoros - 101147405
+        Malak Abdou - 101139692
+        Nathan Gomes - 101143780
+
+Version: 1.0.0
 """
+
 
 from Cimpl import load_image, choose_file, save_as, show
 from L5_6_image_filters import posterize, flip_horizontal, sepia, \
@@ -10,7 +16,7 @@ from L5_6_image_filters import posterize, flip_horizontal, sepia, \
      flip_vertical
 from L5_6_image_filters import two_tone as tt
 
-inputted_task = "2"
+inputted_task = ""
 image = None
 while inputted_task != "Q":
     inputted_task = input(

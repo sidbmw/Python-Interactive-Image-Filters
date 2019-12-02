@@ -1,3 +1,14 @@
+"""ECOR 1051 - Milestone 3
+Group: L5_6
+Date of Submission: Dec 1, 2019
+Authors: Siddharth Natamai - 101143016
+        Leanne Matamoros - 101147405
+        Malak Abdou - 101139692
+        Nathan Gomes - 101143780
+
+Version: 1.0.0
+"""
+
 from Cimpl import get_height, get_width, choose_file, load_image, copy, \
     set_color, create_color, \
     get_color, Image, show
