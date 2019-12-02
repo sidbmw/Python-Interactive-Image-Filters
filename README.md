@@ -18,8 +18,15 @@ pip install pillow
 
 ## Usage
 
+Prerequisites:
+* Python 3.7.4: https://www.python.org/  <br />
+* Wing101 7.1: https://wingware.com/downloads <br />
+* Pillow 6.1.0: https://pypi.org/project/Pillow/ <br />
+* Cimpl Library: CULearn website <br />
+
+
 ```sh
-Install/Update python3, install Pillow and clone the repo! :)
+Clone the repo! :)
 ```
 
 ## Authors
