@@ -1,5 +1,11 @@
 """
 Author: Siddharth Natamai - 101143016
+        Leanne Matamoros - 101147405
+        Malak Abdou - 101139692
+        Nathan Gomes - 101143780
+        
+Date: Dec 1, 2019
+Version: 1.0.0
 """
 
 from Cimpl import load_image, choose_file, save_as, show
@@ -25,6 +31,8 @@ while inputted_task != "Q":
             color_value_one = "yellow"
             color_value_two = "cyan"
             image = tt(image, color_value_one, color_value_two)
+            show(image)
+
         else:
             print("No image loaded")
     elif inputted_task == "3":
@@ -34,43 +42,59 @@ while inputted_task != "Q":
             color_value_three = "cyan"
             image = three_tone(image, color_value_one, color_value_two,
                                color_value_three)
+            show(image)
+
         else:
             print("No image loaded")
     elif inputted_task == "X":
         if not (image is None):
             image = extreme_contrast(image)
+            show(image)
+
         else:
             print("No image loaded")
     elif inputted_task == "T":
         if not (image is None):
             image = sepia(image)
+            show(image)
+
         else:
             print("No image loaded")
     elif inputted_task == "P":
         if not (image is None):
             image = posterize(image)
+            show(image)
+
         else:
             print("No image loaded")
     elif inputted_task == "E":
         if not (image is None):
             threshold = float(input("Input a threshold value: "))
             image = detect_edges(image, threshold)
+            show(image)
+
         else:
             print("No image loaded")
     elif inputted_task == "I":
         if not (image is None):
             threshold = float(input("Input a threshold value: "))
             image = detect_edges_better(image, threshold)
+            show(image)
+
         else:
             print("No image loaded")
     elif inputted_task == "V":
         if not (image is None):
             image = flip_vertical(image)
+            show(image)
+
         else:
             print("No image loaded")
     elif inputted_task == "H":
         if not (image is None):
             image = flip_horizontal(image)
+            show(image)
+
         else:
             print("No image loaded")
     elif inputted_task == "S":
@@ -78,7 +102,6 @@ while inputted_task != "Q":
             filename = input(
                 "Input the filename with file extension "
                 "(e.g. new_image.jpg): ")
-            show(image)
             save_as(image, filename)
         else:
             print("No image loaded")
