@@ -9,7 +9,7 @@ from L5_6_image_filters import posterize, flip_horizontal, sepia, \
 
 from L5_6_image_filters import two_tone as tt
 
-inputted_task = "2"
+inputted_task = ""
 image = None
 while inputted_task != "Q":
     inputted_task = input(
@@ -78,7 +78,6 @@ while inputted_task != "Q":
             filename = input(
                 "Input the filename with file extension "
                 "(e.g. new_image.jpg): ")
-            print("test")
             show(image)
             save_as(image, filename)
         else:
