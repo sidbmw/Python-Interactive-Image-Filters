@@ -26,7 +26,7 @@ Prerequisites:
 
 
 ```sh
-Install/Update python3, install Pillow and clone the repo! :)
+Clone the repo! :)
 ```
 
 ## Authors
