@@ -44,7 +44,7 @@ Give a ⭐️ if this project helped you!
 
 ## 📝 License
 
-Copyright © 2019 [Siddharth Natamai, Leanne Matamoros, Nathan Gomes, Malak Abdou](https://github.com/sidbmw).<br />
+Copyright © 2020 [Siddharth Natamai, Leanne Matamoros, Nathan Gomes, Malak Abdou](https://github.com/sidbmw).<br />
 This project is [MIT](https://github.com/sidbmw/ECOR1051-MOD2/blob/master/LICENSE) licensed.
 
 
